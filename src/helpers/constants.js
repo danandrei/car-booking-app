@@ -11,3 +11,10 @@ export const userConstants = {
 export const apiConstants = {
   HOST: 'http://localhost:9090/v0.1.0',
 };
+
+export const uiConstants = {
+  SHOW_LOGIN_MODAL: 'SHOW_LOGIN_MODAL',
+  HIDE_LOGIN_MODAL: 'HIDE_LOGIN_MODAL',
+  SHOW_REGISTER_MODAL: 'SHOW_REGISTER_MODAL',
+  HIDE_REGISTER_MODAL: 'HIDE_REGISTER_MODAL',
+};
