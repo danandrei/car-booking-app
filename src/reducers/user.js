@@ -20,6 +20,12 @@ export const user = (state = initialState, action) => {
         data: null,
         accessToken: null,
       };
+    case userConstants.GET_CURRENT_USER_SUCCESS:
+    console.log(action.payload.data.data)
+      return {
+        ...state,
+        data: action.payload.data.data,
+      }
     default:
       return state
   };

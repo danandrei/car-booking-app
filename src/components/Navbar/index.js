@@ -1,22 +1,29 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { uiActions, userActions } from '../../actions';
-import { userIsNotAuthenticated, userIsAuthenticated} from '../../helpers'
+import {
+  userIsNotAuthenticated,
+  userIsAuthenticated,
+  adminIsAuthenticated,
+} from '../../helpers'
 
 import PublicNavComponent from './PublicNav';
-import PrivateNavComponent from './PrivateNav';
+import CustomerNavComponent from './CustomerNav';
+import AdminNavComponent from './AdminNav';
 
 const PublicNav = userIsNotAuthenticated(PublicNavComponent);
-const PrivateNav = userIsAuthenticated(PrivateNavComponent);
+const CustomerNav = userIsAuthenticated(CustomerNavComponent);
+const AdminNav = adminIsAuthenticated(AdminNavComponent);
 
 class Navbar extends Component {
 
   render() {
     return (
       <div className="navbar">
-        <div className="container">
-          <i className="fab fa-asymmetrik navbar-logo"></i>
-          <PrivateNav handleLogout={this.props.signOut} />
+        <i className="fab fa-asymmetrik navbar-logo"></i>
+        <div>
+          <AdminNav />
+          <CustomerNav handleLogout={this.props.signOut} />
           <PublicNav handleSignUpModal={this.props.showRegisterModal} handleSignInModal={this.props.showLoginModal}/>
         </div>
       </div>

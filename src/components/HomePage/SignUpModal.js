@@ -14,13 +14,18 @@ class SignUpModal extends Component {
     return this.props.signUp(values)
     .then(res => {
 
+      // throw an error if the sign up failed
       if (res.type === userConstants.SIGN_UP_FAIL) {
         throw new SubmissionError({
           _error: res.error.response.data.message,
         });
       }
 
-      this.handleClose();
+      // sign in the user if sign up is succesfull
+      this.props.signIn(values.email, values.password)
+      .then(res => {
+        this.handleClose()
+      });
     });
   }
 
@@ -53,4 +58,5 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   hideRegisterModal: uiActions.hideRegisterModal,
   signUp: userActions.signUp,
+  signIn: userActions.signIn
 })(SignUpModal);

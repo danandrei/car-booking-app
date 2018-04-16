@@ -1,6 +1,5 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import { history } from '../../helpers/';
 import TextField from './TextField';
 
 const SignInForm = props => {
@@ -26,7 +25,7 @@ const SignInForm = props => {
         component={TextField}
       />
       {error && <p className="error">{error}</p>}
-      <button className="btn btn-lg btn-primary btn-block" type="submit" disabled={submitting}>Sign in</button>
+      <button className="btn btn-primary btn-block" type="submit" disabled={submitting}>Sign in</button>
     </form>
   );
 };

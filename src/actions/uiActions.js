@@ -24,9 +24,39 @@ const hideRegisterModal = () => {
   }
 }
 
+const showAddCarModal = () => {
+  return {
+    type: uiConstants.SHOW_ADD_CAR_MODAL
+  }
+}
+
+const hideAddCarModal = () => {
+  return {
+    type: uiConstants.HIDE_ADD_CAR_MODAL
+  }
+}
+
+const showEditCarModal = (car) => {
+  return {
+    type: uiConstants.SHOW_EDIT_CAR_MODAL,
+    car,
+  }
+}
+
+const hideEditCarModal = () => {
+  return {
+    type: uiConstants.HIDE_EDIT_CAR_MODAL
+  }
+}
+
+
 export const uiActions = {
   showLoginModal,
   showRegisterModal,
   hideRegisterModal,
   hideLoginModal,
+  showEditCarModal,
+  hideEditCarModal,
+  showAddCarModal,
+  hideAddCarModal,
 }

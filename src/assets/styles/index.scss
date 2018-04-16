@@ -18,13 +18,15 @@ html, body, #root {
   left: 0;
   width: 100%;
   height: 65px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 1);
+  border-bottom: 1px solid #eee;
   display: felx;
   justify-content: space-between;
   text-transform: uppercase;
-  color: #fff;
+  color: #222;
   letter-spacing: .2rem;
   line-height: 65px;
+  z-index: 1000;
 
   .navbar-logo {
     display: inline-block;
@@ -194,4 +196,16 @@ html, body, #root {
 .ReactModalPortal {
   position: relative;
   z-index: 10000;
+}
+
+/* CARS PAGE */
+.cars-wrap {
+  position: relative;
+  top: 65px;
+  padding-top: 30px;
+}
+
+.car-modal-container {
+  left: 50%;
+  transform: translate(-50%, 0);
 }

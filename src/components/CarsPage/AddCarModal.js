@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 import { connect } from 'react-redux';
-import { userActions, uiActions } from '../../actions';
-import { userConstants } from '../../helpers';
+import { carsActions, uiActions } from '../../actions';
+import { carsConstants } from '../../helpers';
 import { SubmissionError } from 'redux-form';
-import SignInForm from '../@shared/SignInForm';
+import CarForm from '../@shared/CarForm';
 
 Modal.setAppElement('body');
 
-class SignInModal extends Component {
+class AddCarModal extends Component {
 
   handleSubmit(values) {
-    return this.props.signIn(values.email, values.password)
+    return this.props.addCar(values)
     .then(res => {
 
-      if (res.type === userConstants.SIGN_IN_FAIL) {
+      if (res.type === carsConstants.ADD_CAR_FAIL) {
         throw new SubmissionError({
           _error: res.error.response.data.message,
         });
@@ -25,19 +25,21 @@ class SignInModal extends Component {
   }
 
   handleClose() {
-    this.props.hideLoginModal();
+    this.props.hideAddCarModal();
   }
 
   render() {
     return (
       <Modal
-        isOpen={this.props.ui.loginModalVisible}
+        isOpen={this.props.ui.addCarModalVisible}
         onRequestClose={this.handleClose.bind(this)}
         className='modal-wrap'
         overlayClassName='overlay'
       >
-        <div className="modal-container">
-          <SignInForm onSubmit={this.handleSubmit.bind(this)} />
+        <div className="car-modal-container modal-container">
+          <h3 className="font-weight-normal mb-3">Car management</h3>
+          <p className="text-center">Add a new car</p>
+          <CarForm onSubmit={this.handleSubmit.bind(this)} />
         </div>
       </Modal>
     );
@@ -51,6 +53,6 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, {
-  hideLoginModal: uiActions.hideLoginModal,
-  signIn: userActions.signIn,
-})(SignInModal);
+  hideAddCarModal: uiActions.hideAddCarModal,
+  addCar: carsActions.addCar,
+})(AddCarModal);

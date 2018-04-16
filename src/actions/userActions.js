@@ -1,4 +1,4 @@
-import { history, userConstants } from '../helpers';
+import { userConstants } from '../helpers';
 
 const signIn = (email, password) => {
   return {
@@ -14,7 +14,7 @@ const signIn = (email, password) => {
       }
     }
   }
-}
+};
 
 const signOut = () => {
   localStorage.removeItem('accessToken');
@@ -35,10 +35,23 @@ const signUp = (data) => {
       }
     }
   }
-}
+};
+
+const getCurrentUser = () => {
+  return {
+    type: userConstants.GET_CURRENT_USER,
+    payload: {
+      request: {
+        method: 'GET',
+        url: '/users/me',
+      }
+    }
+  }
+};
 
 export const userActions = {
   signIn,
   signOut,
   signUp,
+  getCurrentUser,
 };
