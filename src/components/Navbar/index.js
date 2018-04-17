@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { uiActions, userActions } from '../../actions';
 import {
-  userIsNotAuthenticated,
-  userIsAuthenticated,
+  customerIsNotAuthenticated,
+  customerIsAuthenticated,
   adminIsAuthenticated,
 } from '../../helpers'
 
@@ -11,8 +11,8 @@ import PublicNavComponent from './PublicNav';
 import CustomerNavComponent from './CustomerNav';
 import AdminNavComponent from './AdminNav';
 
-const PublicNav = userIsNotAuthenticated(PublicNavComponent);
-const CustomerNav = userIsAuthenticated(CustomerNavComponent);
+const PublicNav = customerIsNotAuthenticated(PublicNavComponent);
+const CustomerNav = customerIsAuthenticated(CustomerNavComponent);
 const AdminNav = adminIsAuthenticated(AdminNavComponent);
 
 class Navbar extends Component {
@@ -22,7 +22,7 @@ class Navbar extends Component {
       <div className="navbar">
         <i className="fab fa-asymmetrik navbar-logo"></i>
         <div>
-          <AdminNav />
+          <AdminNav handleLogout={this.props.signOut} />
           <CustomerNav handleLogout={this.props.signOut} />
           <PublicNav handleSignUpModal={this.props.showRegisterModal} handleSignInModal={this.props.showLoginModal}/>
         </div>

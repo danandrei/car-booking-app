@@ -5,31 +5,18 @@ import { connect } from 'react-redux';
 import { history } from '../../helpers'
 import { userActions } from '../../actions';
 import {
-  userIsNotAuthenticatedRedir,
+  customerIsNotAuthenticatedRedir,
   adminIsNotAuthenticatedRedir,
 } from '../../helpers'
 import '../../assets/styles/index.scss';
 import Navbar from '../Navbar';
 import CarsPage from '../CarsPage';
+import CarPage from '../CarPage';
 import HomePage from '../HomePage';
 import NotFound from './NotFound';
 import BookingPage from '../BookingPage';
 
 class App extends Component {
-
-  componentWillMount() {
-    this.fetchCurrentUser({}, this.props.user);
-  }
-
-  componentWillUpdate(nextProps) {
-    this.fetchCurrentUser(this.props.user, nextProps.user);
-  }
-
-  fetchCurrentUser(oldUser, newUser) {
-    if (oldUser.accessToken !== newUser.accessToken) {
-      this.props.getCurrentUser();
-    }
-  }
 
   render() {
     return (
@@ -38,8 +25,9 @@ class App extends Component {
           <Router history={history}>
             <Switch>
               <Route exact path="/" component={HomePage} />
-              <Route path="/book" component={userIsNotAuthenticatedRedir(BookingPage)} />
-              <Route path="/cars" component={adminIsNotAuthenticatedRedir(CarsPage)} />
+              <Route path="/book" component={customerIsNotAuthenticatedRedir(BookingPage)} />
+              <Route exact path="/cars" component={adminIsNotAuthenticatedRedir(CarsPage)} />
+              <Route path="/cars/:id" component={adminIsNotAuthenticatedRedir(CarPage)} />
               <Route component={NotFound} />
             </Switch>
           </Router>

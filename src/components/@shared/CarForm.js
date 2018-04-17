@@ -51,7 +51,7 @@ let InitCarForm = reduxForm({
 
 InitCarForm = connect(
   state => ({
-    initialValues: state.ui.selectedCar
+    initialValues: state.adminCars.selectedCar
   }),
 )(InitCarForm);
 

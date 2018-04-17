@@ -4,7 +4,8 @@ const initialState = {
   loginModalVisible: false,
   registerModalVisible: false,
   addCarModalVisible: false,
-  selectedCar: null,
+  bookCarModalVisible: false,
+  bookCarId: null,
 };
 
 export const ui = (state = initialState, action) => {
@@ -39,17 +40,27 @@ export const ui = (state = initialState, action) => {
         ...state,
         addCarModalVisible: false,
       }
-        case uiConstants.SHOW_EDIT_CAR_MODAL:
+    case uiConstants.SHOW_EDIT_CAR_MODAL:
       return {
         ...state,
         editCarModalVisible: true,
-        selectedCar: action.car,
       }
     case uiConstants.HIDE_EDIT_CAR_MODAL:
       return {
         ...state,
         editCarModalVisible: false,
-        selectedCar: null,
+      }
+    case uiConstants.SHOW_BOOK_CAR_MODAL:
+      return {
+        ...state,
+        bookCarModalVisible: true,
+        bookCarId: action.carId,
+      }
+    case uiConstants.HIDE_BOOK_CAR_MODAL:
+      return {
+        ...state,
+        bookCarModalVisible: false,
+        bookCarId: null,
       }
     default:
       return state

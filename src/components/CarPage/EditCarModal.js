@@ -11,7 +11,7 @@ Modal.setAppElement('body');
 class EditCarModal extends Component {
 
   handleSubmit(values) {
-    return this.props.editCar(this.props.ui.selectedCar._id, values)
+    return this.props.editCar(this.props.selectedCar._id, values)
     .then(res => {
 
       if (res.type === carsConstants.EDIT_CAR_FAIL) {
@@ -20,13 +20,6 @@ class EditCarModal extends Component {
         });
       }
 
-      this.handleClose()
-    });
-  }
-
-  handleRemove() {
-    return this.props.removeCar(this.props.ui.selectedCar._id)
-    .then(res => {
       this.handleClose()
     });
   }
@@ -45,9 +38,8 @@ class EditCarModal extends Component {
       >
         <div className="car-modal-container modal-container">
           <h3 className="font-weight-normal mb-3">Car management</h3>
-          <p className="text-center">Add a new car</p>
+          <p className="text-center">Edit car</p>
           <CarForm onSubmit={this.handleSubmit.bind(this)}/>
-          <button className="btn btn-danger btn-block mt-1" onClick={this.handleRemove.bind(this)}>Delete</button>
         </div>
       </Modal>
     );
@@ -57,11 +49,11 @@ class EditCarModal extends Component {
 const mapStateToProps = (state) => {
   return {
     ui: state.ui,
+    selectedCar: state.adminCars.selectedCar,
   };
 }
 
 export default connect(mapStateToProps, {
   hideEditCarModal: uiActions.hideEditCarModal,
   editCar: carsActions.editCar,
-  removeCar: carsActions.removeCar,
 })(EditCarModal);

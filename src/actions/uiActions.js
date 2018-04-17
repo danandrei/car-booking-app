@@ -36,16 +36,28 @@ const hideAddCarModal = () => {
   }
 }
 
-const showEditCarModal = (car) => {
+const showEditCarModal = () => {
   return {
     type: uiConstants.SHOW_EDIT_CAR_MODAL,
-    car,
   }
 }
 
 const hideEditCarModal = () => {
   return {
     type: uiConstants.HIDE_EDIT_CAR_MODAL
+  }
+}
+
+const showBookCarModal = (carId) => {
+  return {
+    type: uiConstants.SHOW_BOOK_CAR_MODAL,
+    carId,
+  }
+}
+
+const hideBookCarModal = () => {
+  return {
+    type: uiConstants.HIDE_BOOK_CAR_MODAL
   }
 }
 
@@ -59,4 +71,6 @@ export const uiActions = {
   hideEditCarModal,
   showAddCarModal,
   hideAddCarModal,
+  showBookCarModal,
+  hideBookCarModal,
 }

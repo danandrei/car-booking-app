@@ -1,14 +1,33 @@
 import { carsConstants } from '../helpers';
 
-const getCars = () => {
+const getCar = (carId) => {
   return {
-    type: carsConstants.GET_CARS,
+    type: carsConstants.GET_CAR,
+    payload: {
+      request: {
+        method: 'GET',
+        url: '/cars/' + carId,
+      }
+    }
+  }
+};
+
+const getCars = (params = {}, forAdmin) => {
+  return {
+    type: forAdmin ? carsConstants.GET_ADMIN_CARS : carsConstants.GET_CUSTOMER_CARS,
     payload: {
       request: {
         method: 'GET',
         url: '/cars',
+        params,
       }
     }
+  }
+};
+
+const deselectCar = () => {
+  return {
+    type: carsConstants.DESELECT_CAR,
   }
 };
 
@@ -55,4 +74,6 @@ export const carsActions = {
   addCar,
   editCar,
   removeCar,
+  getCar,
+  deselectCar,
 };
