@@ -26,8 +26,15 @@ const bookCar = (carId, data) => {
   }
 };
 
+const changeFilters = (filter) => {
+  return {
+    type: bookingConstants.CHANGE_BOOKING_FILTERS,
+    filter,
+  }
+};
 
 export const bookingActions = {
   getBookings,
   bookCar,
+  changeFilters,
 };

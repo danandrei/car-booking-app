@@ -4,6 +4,35 @@ import { Field, reduxForm } from 'redux-form';
 import TextField from './TextField';
 import TextArea from './TextArea';
 
+const validate = values => {
+  const errors = {}
+  if (!values.make) {
+    errors.make = 'Required'
+  }
+
+  if (!values.model) {
+    errors.model = 'Required'
+  }
+
+  if (!values.year) {
+    errors.year = 'Required'
+  }
+
+  if (values.year > 2018) {
+    errors.year = 'A car cannot be from the future'
+  }
+
+  if (values.year < 1890) {
+    errors.year = 'A car cannot be that old'
+  }
+
+  if (!values.description) {
+    errors.description = 'Required'
+  }
+
+  return errors
+}
+
 const CarForm = props => {
   const { error, handleSubmit, submitting } = props;
   return (
@@ -47,6 +76,7 @@ const CarForm = props => {
 let InitCarForm = reduxForm({
   form: 'car',
   enableReinitialize : true,
+  validate,
 })(CarForm);
 
 InitCarForm = connect(

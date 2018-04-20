@@ -1,5 +1,4 @@
 import { userConstants } from '../helpers';
-
 const accessToken = localStorage.getItem('accessToken');
 const role = localStorage.getItem('role');
 const initialState = {

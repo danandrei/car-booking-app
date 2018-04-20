@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
 import { carsActions, uiActions } from '../../actions';
 import BookingList from './BookingList';
 import BookCarModal from './BookCarModal';
@@ -26,13 +25,12 @@ class BookingPage extends Component {
             <h3>Book a car</h3>
           </div>
           { !this.props.cars.data.length && <div className="text-center"><strong>No cars available to book</strong></div>}
-          <BookingList cars={this.props.cars.data} handleSelect={this.props.showBookCarModal}/>
-          {
-            !this.props.cars.noMore &&
-            <div className="text-center">
-              <button className="btn btn-default" disabled={this.props.cars.noMore} onClick={this.loadCars.bind(this)}>Load More</button>
-            </div>
-          }
+          <BookingList
+            cars={this.props.cars.data}
+            handleSelect={this.props.showBookCarModal}
+            noMore={this.props.cars.noMore}
+            handleLoad={this.loadCars.bind(this)}
+          />
         </div>
         <BookCarModal/>
       </div>

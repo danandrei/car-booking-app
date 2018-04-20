@@ -18,6 +18,7 @@
     "css-loader": "0.28.7",
     "dotenv": "4.0.0",
     "dotenv-expand": "4.2.0",
+    "enzyme-to-json": "^3.3.3",
     "eslint": "4.10.0",
     "eslint-config-react-app": "^2.1.0",
     "eslint-loader": "1.9.0",
@@ -31,7 +32,6 @@
     "globalize": "^1.3.0",
     "history": "^4.7.2",
     "html-webpack-plugin": "2.29.0",
-    "jest": "20.0.4",
     "lodash": "^4.17.5",
     "moment": "^2.22.1",
     "node-sass": "^4.8.3",
@@ -49,6 +49,7 @@
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^5.0.0-alpha.9",
     "react-slick": "^0.22.3",
+    "react-test-renderer": "^16.3.2",
     "react-widgets": "^4.2.6",
     "react-widgets-globalize": "^5.0.5",
     "react-widgets-moment": "^4.0.12",
@@ -57,6 +58,7 @@
     "redux-axios-middleware": "^4.0.0",
     "redux-form": "^7.3.0",
     "redux-logger": "^2.6.1",
+    "redux-mock-store": "^1.5.1",
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0",
     "sass-loader": "^6.0.7",
@@ -72,14 +74,15 @@
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
-    "test": "node scripts/test.js --env=jsdom"
+    "test": "jest"
   },
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.{js,jsx,mjs}"
     ],
     "setupFiles": [
-      "<rootDir>/config/polyfills.js"
+      "<rootDir>/config/polyfills.js",
+      "jest-localstorage-mock"
     ],
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
@@ -115,5 +118,11 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "devDependencies": {
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "jest": "^20.0.4",
+    "jest-localstorage-mock": "^2.2.0"
   }
 }

@@ -1,13 +1,19 @@
 import React from 'react';
-import { history } from '../../helpers'
+import { NavLink } from 'react-router-dom';
 
 const CustomerNav = ({handleLogout}) => (
   <ul className="navbar-list">
     <li className="navbar-item">
-      <a className="navbar-link" onClick={() => history.push('/book')}>Book a car</a>
+      <NavLink
+        activeClassName="active"
+        className="navbar-link"
+        to="/book"
+      >
+        Book a car
+      </NavLink>
     </li>
     <li className="navbar-item">
-      <a className="navbar-link" onClick={handleLogout}>Sign out</a>
+      <span className="navbar-link" onClick={handleLogout}>Sign out</span>
     </li>
   </ul>
 );

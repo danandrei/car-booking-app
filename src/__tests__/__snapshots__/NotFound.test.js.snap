@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotFound should render correctly 1`] = `
+<div
+  className="text-center cars-wrap"
+>
+  <h1>
+    404! Not found.
+  </h1>
+</div>
+`;

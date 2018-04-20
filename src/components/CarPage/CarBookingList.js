@@ -18,19 +18,27 @@ class CarBookingList extends Component {
 
   render() {
     return (
-      <table className="table table-hover mt-3">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Start Date</th>
-            <th scope="col">End Date</th>
-            <th scope="col">User</th>
-          </tr>
-        </thead>
-        <tbody>
-          {this.renderList(this.props.bookings)}
-        </tbody>
-      </table>
+      <div className="mt-3">
+        <table className="table table-hover mt-3">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Start Date</th>
+              <th scope="col">End Date</th>
+              <th scope="col">User</th>
+            </tr>
+          </thead>
+          <tbody>
+            {this.renderList(this.props.bookings)}
+          </tbody>
+        </table>
+        {
+            !this.props.noMore &&
+            <div className="text-center">
+              <button className="btn btn-default" onClick={this.props.handleLoad}>Load More</button>
+            </div>
+        }
+      </div>
     )
   }
 }

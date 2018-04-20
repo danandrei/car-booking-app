@@ -21,8 +21,16 @@ class BookingList extends Component {
 
   render() {
     return (
-      <div className="row">
-        {this.renderList(this.props.cars, this.props.handleSelect)}
+      <div>
+        <div className="row">
+          {this.renderList(this.props.cars, this.props.handleSelect)}
+        </div>
+        {
+          !this.props.noMore &&
+          <div className="text-center">
+            <button className="btn btn-default" onClick={this.props.handleLoad}>Load More</button>
+          </div>
+        }
       </div>
     )
   }

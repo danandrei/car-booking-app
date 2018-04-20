@@ -15,16 +15,25 @@ const PublicNav = customerIsNotAuthenticated(PublicNavComponent);
 const CustomerNav = customerIsAuthenticated(CustomerNavComponent);
 const AdminNav = adminIsAuthenticated(AdminNavComponent);
 
-class Navbar extends Component {
+export class Navbar extends Component {
 
   render() {
+    const {
+      signOut,
+      showRegisterModal,
+      showLoginModal,
+    } = this.props
+
     return (
       <div className="navbar">
         <i className="fab fa-asymmetrik navbar-logo"></i>
         <div>
-          <AdminNav handleLogout={this.props.signOut} />
-          <CustomerNav handleLogout={this.props.signOut} />
-          <PublicNav handleSignUpModal={this.props.showRegisterModal} handleSignInModal={this.props.showLoginModal}/>
+          <AdminNav handleLogout={signOut} />
+          <CustomerNav handleLogout={signOut} />
+          <PublicNav
+            handleSignUpModal={showRegisterModal}
+            handleSignInModal={showLoginModal}
+          />
         </div>
       </div>
     )
