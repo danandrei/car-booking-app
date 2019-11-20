@@ -4,7 +4,7 @@ import { createBrowserHistory } from 'history';
 import {
   customerIsNotAuthenticatedRedir,
   adminIsNotAuthenticatedRedir,
-} from '../../helpers'
+} from '../../helpers';
 import '../../assets/styles/index.scss';
 import Navbar from '../Navbar';
 import CarsPage from '../CarsPage';
@@ -14,27 +14,30 @@ import BookingPage from '../BookingPage';
 import HomePage from '../HomePage';
 
 export class App extends Component {
-
   render() {
-    // return (
-    //   <Router history={createBrowserHistory()}>
-    //     <div className="h-100">
-    //       <Navbar />
-    //       <Switch>
-    //         <Route exact path="/" component={HomePage} />
-    //         <Route path="/book" component={customerIsNotAuthenticatedRedir(BookingPage)} />
-    //         <Route exact path="/cars" component={adminIsNotAuthenticatedRedir(CarsPage)} />
-    //         <Route path="/cars/:id" component={adminIsNotAuthenticatedRedir(CarPage)} />
-    //         <Route component={NotFound} />
-    //       </Switch>
-    //     </div>
-    //   </Router>
-    // );
     return (
-      <div>
-        <Navbar/>
-        <h1>App</h1>
-      </div>
+      <Router history={createBrowserHistory()}>
+        <div className="h-100">
+          <Navbar />
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route
+              path="/book"
+              component={customerIsNotAuthenticatedRedir(BookingPage)}
+            />
+            <Route
+              exact
+              path="/cars"
+              component={adminIsNotAuthenticatedRedir(CarsPage)}
+            />
+            <Route
+              path="/cars/:id"
+              component={adminIsNotAuthenticatedRedir(CarPage)}
+            />
+            <Route component={NotFound} />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }

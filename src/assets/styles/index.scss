@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   font-family: 'Raleway', sans-serif;
 }
@@ -20,11 +22,12 @@ html, body, #root {
   height: 65px;
   background-color: rgba(255, 255, 255, 1);
   border-bottom: 1px solid #eee;
-  display: felx;
+  display: flex;
+  flex-wrap: nowrap;
   justify-content: space-between;
   text-transform: uppercase;
   color: #222;
-  letter-spacing: .2rem;
+  letter-spacing: 0.2rem;
   line-height: 65px;
   z-index: 1000;
 
@@ -81,8 +84,8 @@ html, body, #root {
 /* FORM */
 /* Signup Signin page */
 :root {
-  --input-padding-x: .55rem;
-  --input-padding-y: .55rem;
+  --input-padding-x: 0.55rem;
+  --input-padding-y: 0.55rem;
 }
 
 .form-label-group > input,
@@ -100,8 +103,8 @@ html, body, #root {
   line-height: 1.5;
   color: #495057;
   border: 1px solid transparent;
-  border-radius: .25rem;
-  transition: all .1s ease-in-out;
+  border-radius: 0.25rem;
+  transition: all 0.1s ease-in-out;
 }
 
 .form-label-group {
@@ -129,7 +132,9 @@ html, body, #root {
   }
 
   input:not(:placeholder-shown) {
-    padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
+    padding-top: calc(
+      var(--input-padding-y) + var(--input-padding-y) * (2 / 3)
+    );
     padding-bottom: calc(var(--input-padding-y) / 3);
   }
 
@@ -141,13 +146,13 @@ html, body, #root {
   }
 
   a {
-    color: #007bff
+    color: #007bff;
   }
 
   input.error {
     border-color: #ff8080;
     outline: 0;
-    box-shadow: 0 0 0 0.1rem rgba(255,0,0,.25);
+    box-shadow: 0 0 0 0.1rem rgba(255, 0, 0, 0.25);
   }
 
   span.error {
